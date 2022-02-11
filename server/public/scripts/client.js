@@ -5,4 +5,7 @@ function readyNow(){
     displayTasks();
 }
 
-function displayTasks();
+function displayTasks(){
+    console.log('in displayTasks');
+    
+};
