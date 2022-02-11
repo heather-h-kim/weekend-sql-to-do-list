@@ -19,4 +19,18 @@ pool.on('error', (error) => {
     console.log('Error with postgres pool', error);
 });
 
+router.get('/', (req, res) => {
+    let queryText = `
+    SELECT * FROM "tasks"
+    `
+    pool.query(queryText)
+    .then((result) => {
+        console.log(result);
+        res.send(result.rows);
+    }).catch((err) => {
+        console.log('Error making query', queryText, err);
+        res.sendStatus(500);
+    });
+});
+
 module.exports = router;
