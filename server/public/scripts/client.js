@@ -9,6 +9,7 @@ function readyNow(){
 function handleClickListeners(){
     $('#submit').on('click', addNewTask);
     $('#to-do-list').on('click', '.status', changeStatus);
+    $('#to-do-list').on('click', '.delete', deleteTask);
 }
 
 //request data and display it to DOM
@@ -38,7 +39,7 @@ function renderToDOM(tasks){
             <label for="completed">Completed</label>
             </td>
             <td>
-            <button>Delete</button>
+            <button class="delete">Delete</button>
             </td>
         </tr>
         `);
@@ -81,5 +82,19 @@ function changeStatus(){
         displayTasks();
     }).catch(function (error) {
         console.log('Error in PUT', error)
+    });
+}
+
+//delete the task if delete button is clicked
+
+function deleteTask(){
+    let id = $(this).closest('tr').data().id;
+    $.ajax({
+        type: 'DELETE',
+        url:`/todo/${id}`
+    }).then(function (response) {
+        displayTasks();
+    }).catch(function (error) {
+        console.log('Error making DELETE request', error);
     });
 }
