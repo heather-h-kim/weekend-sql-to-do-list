@@ -54,4 +54,23 @@ router.post('/', (req, res) => {
     });
 });
 
+//update is_complete
+router.put('/:id', (req, res) => {
+    let idToUpdate = req.params.id;
+    console.log(idToUpdate);
+    
+    const queryText = `
+    UPDATE "tasks"
+    SET "is_completed" = true
+    WHERE "id" = $1;
+    `;
+    pool.query(queryText, [idToUpdate])
+    .then(result => {
+        res.sendStatus(200);
+    }).catch(err => {
+        res.sendStatus(500);
+    });
+});
+
+
 module.exports = router;
