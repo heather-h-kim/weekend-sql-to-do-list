@@ -26,6 +26,7 @@ function displayTasks(){
 
 //render response to DOM
 function renderToDOM(tasks){
+    $('#to-do-list').empty();
     for (let task of tasks){
         $('#to-do-list').append(`
         <tr>
@@ -47,11 +48,23 @@ function renderToDOM(tasks){
 
 function addNewTask(){
    let newTask = $('#task').val();
+   console.log(newTask);
+   
+   let deadline = $('#deadline').val();
+   console.log(deadline);
+   
    let dataToSend = {
-       
+    task: newTask,
+    deadline: deadline,
    }
    $.ajax({
        type: 'POST',
-       url:
-   })
+       url: '/todo',
+       data: dataToSend
+   }).then(function (response) {
+       console.log('Response from server', response);
+       displayTasks();
+   }).catch(function (error) {
+       console.log('Error in Post', error);
+   });
 }
