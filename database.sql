@@ -2,7 +2,7 @@ CREATE TABLE "tasks" (
 	"id" SERIAL PRIMARY KEY,
 	"task" VARCHAR(250) NOT NULL,
 	"deadline" DATE,
-	"is_completed" BOOLEAN NOT NULL
+	"is_completed" BOOLEAN DEFAULT FALSE
 );
 
 

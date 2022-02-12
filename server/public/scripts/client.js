@@ -45,4 +45,13 @@ function renderToDOM(tasks){
 
 //make a request to save new data and get the latest data 
 
-function 
+function addNewTask(){
+   let newTask = $('#task').val();
+   let dataToSend = {
+       
+   }
+   $.ajax({
+       type: 'POST',
+       url:
+   })
+}

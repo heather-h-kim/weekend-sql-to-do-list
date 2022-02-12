@@ -39,11 +39,11 @@ router.post('/', (req, res) => {
     console.log(req.body);
 
     let queryText = `
-    INSERT INTO "tasks" ("task", "deadline", "is_completed")
-    VALUES ($1, $2, $3);
+    INSERT INTO "tasks" ("task", "deadline")
+    VALUES ($1, $2);
     `;
 
-    let valueArray = [newTask.task, newTask.deadline, newTask.is_completed];
+    let valueArray = [newTask.task, newTask.deadline];
 
     pool.query(queryText, valueArray)
     .then( result => {
