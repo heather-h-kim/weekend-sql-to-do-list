@@ -10,14 +10,16 @@
     <title>Todo List</title>
 </head>
 <body>
-    <h1>To Do List</h1>
+    <h1>To Do List App</h1>
+    <h2>What do you need to do?</h2>
     <div>
-        <input type="text" id="task" placeholder="What do you need to do?">
+        <input class="task-input" type="text" id="task" placeholder="What task?">
         <input type="text" id="deadline" placeholder="By when?">
-        <button id="submit">CREATE</button>
+        <button id="submit">Submit</button>
     </div>
-    <h2>Current List</h2>
-    <div>
+    
+    <div id="table">
+        <h2>Things to do</h2>
         <table>
             <thead>
                 <tr>

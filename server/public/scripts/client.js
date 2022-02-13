@@ -9,7 +9,6 @@ function readyNow(){
 function handleClickListeners(){
     $('#submit').on('click', addNewTask);
     $('#to-do-list').on('click', '.status', changeStatus);
-    $('#to-do-list').on('click', '.status', changeBackgroundColor);
     $('#to-do-list').on('click', '.delete', deleteTask);
 }
 
@@ -33,8 +32,8 @@ function renderToDOM(tasks){
     for (let task of tasks){
         if(task.is_completed === true){ //change background-color if the task is completed
             $('#to-do-list').append(`
-            <tr class=green-background data-id="${task.id}">
-                <td>${task.task}</td>
+            <tr class=blue-background data-id="${task.id}">
+                <td class="task-cell"><li>${task.task}</li></td>
                 <td>${task.deadline}</td>
                 <td>
                 <input type="checkbox" id="completed" class="status" checked>
@@ -47,7 +46,7 @@ function renderToDOM(tasks){
         } else {
             $('#to-do-list').append(`
             <tr data-id="${task.id}">
-                <td>${task.task}</td>
+                <td class="task-cell"><li>${task.task}</li></td>
                 <td>${task.deadline}</td>
                 <td>
                 <input type="checkbox" id="completed" class="status">
@@ -101,9 +100,6 @@ function changeStatus(){
     });
 }
 
-function changeBackgroundColor(){
-    $(this).closest('tr').css("background-color", "green");
-}
 
 //delete the task if delete button is clicked
 
