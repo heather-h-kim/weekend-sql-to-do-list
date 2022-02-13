@@ -107,13 +107,27 @@ function changeStatus(){
 //delete the task if delete button is clicked
 
 function deleteTask(){
-    let id = $(this).closest('tr').data().id;
-    $.ajax({
-        type: 'DELETE',
-        url:`/todo/${id}`
-    }).then(function (response) {
-        displayTasks();
-    }).catch(function (error) {
-        console.log('Error making DELETE request', error);
-    });
+    if(confirm('Are you sure you want to delete this task?')){
+        console.log('The task is deleted');
+        let id = $(this).closest('tr').data().id;
+        $.ajax({
+            type: 'DELETE',
+            url:`/todo/${id}`
+        }).then(function (response) {
+            displayTasks();
+        }).catch(function (error) {
+            console.log('Error making DELETE request', error);
+        });
+    } else {
+        console.log('The task is not deleted');  
+    }
+    // let id = $(this).closest('tr').data().id;
+    // $.ajax({
+    //     type: 'DELETE',
+    //     url:`/todo/${id}`
+    // }).then(function (response) {
+    //     displayTasks();
+    // }).catch(function (error) {
+    //     console.log('Error making DELETE request', error);
+    // });
 }
