@@ -22,7 +22,8 @@ pool.on('error', (error) => {
 //get data from the database and send it back to the client
 router.get('/', (req, res) => {
     let queryText = `
-    SELECT * FROM "tasks" ORDER BY "id";
+    SELECT *, TO_CHAR("deadline", 'mm-dd-yyyy') AS "new_deadline", 
+    TO_CHAR("completed_date", 'mm-dd-yyyy') AS "new_completed_date" FROM "tasks" ORDER BY "id";
     `
     pool.query(queryText)
     .then((result) => {

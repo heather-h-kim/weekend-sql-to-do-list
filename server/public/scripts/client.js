@@ -34,11 +34,12 @@ function renderToDOM(tasks){
             $('#to-do-list').append(`
             <tr class=blue-background data-id="${task.id}">
                 <td class="task-cell"><li>${task.task}</li></td>
-                <td>${task.deadline}</td>
+                <td>${task.new_deadline}</td>
                 <td>
                 <input type="checkbox" id="completed" class="status" checked>
                 <label for="completed">Completed</label>
                 </td>
+                <td>${task.new_completed_date}</td>
                 <td>
                 <button class="delete">Delete</button>
                 </td>
@@ -47,10 +48,12 @@ function renderToDOM(tasks){
             $('#to-do-list').append(`
             <tr data-id="${task.id}">
                 <td class="task-cell"><li>${task.task}</li></td>
-                <td>${task.deadline}</td>
+                <td>${task.new_deadline}</td>
                 <td>
                 <input type="checkbox" id="completed" class="status">
                 <label for="completed">Completed</label>
+                </td>
+                <td>
                 </td>
                 <td>
                 <button class="delete">Delete</button>
