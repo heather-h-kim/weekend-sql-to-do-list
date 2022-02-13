@@ -8,7 +8,7 @@ function readyNow(){
 
 function handleClickListeners(){
     $('#submit').on('click', addNewTask);
-    $('#to-do-list').on('click', '.status', changeStatus);
+    $('#to-do-list').on('click', '.status', changeStatus); //Q: How can I make a click listener for un-checking the checkbox?
     $('#to-do-list').on('click', '.delete', deleteTask);
 }
 
@@ -121,13 +121,4 @@ function deleteTask(){
     } else {
         console.log('The task is not deleted');  
     }
-    // let id = $(this).closest('tr').data().id;
-    // $.ajax({
-    //     type: 'DELETE',
-    //     url:`/todo/${id}`
-    // }).then(function (response) {
-    //     displayTasks();
-    // }).catch(function (error) {
-    //     console.log('Error making DELETE request', error);
-    // });
 }

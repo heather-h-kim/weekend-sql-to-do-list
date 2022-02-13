@@ -23,7 +23,7 @@ pool.on('error', (error) => {
 router.get('/', (req, res) => {
     let queryText = `
     SELECT *, TO_CHAR("deadline", 'mm-dd-yyyy') AS "new_deadline", 
-    TO_CHAR("completed_date", 'mm-dd-yyyy') AS "new_completed_date" FROM "tasks" ORDER BY "id";
+    TO_CHAR("completed_date", 'mm-dd-yyyy') AS "new_completed_date" FROM "tasks" ORDER BY "deadline";
     `
     pool.query(queryText)
     .then((result) => {

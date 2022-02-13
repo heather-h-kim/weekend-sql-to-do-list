@@ -1,9 +1,26 @@
 # Project Name
 
-[Project Instructions](./INSTRUCTIONS.md), this line may be removed once you have updated the README.md
+To-Do-List APP
 
 ## Description
 
-Your project description goes here. What problem did you solve? How did you solve it?
+A to do list app that is easy to use. Enter your task and deadline into the input fields and click on the submit button to add the task into your list. Check off the task when it's completed and press the delete button to remove the complete task from the list.
 
-Additional README details can be found [here](https://github.com/PrimeAcademy/readme-template/blob/master/README.md).
+## Prerequisites
+
+* Node.js
+* jQuery.js
+* postgresql
+
+## Installation
+ 1. Open up your editor of choice and run npm init in your terminal
+ 2. Run npm install express in your terminal
+ 3. Run npm install body-parser in your terminal
+ 4. Run npm install pg
+ 4. Run npm start in your terminal
+
+ ## Built With
+
+* Express
+* body-parser
+* postgresql
