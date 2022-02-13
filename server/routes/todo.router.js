@@ -22,7 +22,7 @@ pool.on('error', (error) => {
 //get data from the database and send it back to the client
 router.get('/', (req, res) => {
     let queryText = `
-    SELECT * FROM "tasks"
+    SELECT * FROM "tasks" ORDER BY "id";
     `
     pool.query(queryText)
     .then((result) => {
