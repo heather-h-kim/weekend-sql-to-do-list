@@ -57,15 +57,15 @@ router.post('/', (req, res) => {
 
 //update is_complete
 router.put('/:id', (req, res) => {
-    let idToUpdate = req.params.id;
-    console.log(idToUpdate);
+    let valueArrays= [req.body.newStatus, req.params.id];
+    console.log(req.body.newStatus);
     
     const queryText = `
     UPDATE "tasks"
-    SET "is_completed" = true
-    WHERE "id" = $1;
+    SET "is_completed" = $1
+    WHERE "id" = $2;
     `;
-    pool.query(queryText, [idToUpdate])
+    pool.query(queryText, valueArrays)
     .then(result => {
         res.sendStatus(200);
     }).catch(err => {

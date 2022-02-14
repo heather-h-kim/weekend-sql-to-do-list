@@ -36,7 +36,7 @@ function renderToDOM(tasks){
                 <td class="task-cell"><li>${task.task}</li></td>
                 <td class="other-cells">${task.new_deadline}</td>
                 <td class="other-cells">
-                <input type="checkbox" id="completed" class="status" checked>
+                <input type="checkbox" id="completed" class="status" data-status="${task.is_completed}" checked>
                 <label for="completed">Completed</label>
                 </td>
                 <td class="other-cells">${task.new_completed_date}</td>
@@ -50,7 +50,7 @@ function renderToDOM(tasks){
                 <td class="task-cell"><li>${task.task}</li></td>
                 <td class="other-cells">${task.new_deadline}</td>
                 <td class="other-cells">
-                <input type="checkbox" id="completed" class="status">
+                <input type="checkbox" id="completed" class="status" data-status="${task.is_completed}">
                 <label for="completed">Completed</label>
                 </td>
                 <td class="other-cells">
@@ -92,10 +92,14 @@ function addNewTask(){
 
 function changeStatus(){
     let id = $(this).closest('tr').data().id;
-    console.log(id);
+    const status = $(this).data().status; //false
+    console.log('in changeStatus', id, status);
     $.ajax({
         type: 'PUT',
-        url: `/todo/${id}`
+        url: `/todo/${id}`,
+        data: {
+            newStatus: !status
+        }
     }).then(function (response){
         displayTasks();
     }).catch(function (error) {
