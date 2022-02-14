@@ -3,13 +3,21 @@ const res = require('express/lib/response');
 const router = express.Router();
 const pg = require('pg');
 const Pool = pg.Pool;
-const pool = new Pool({
-    database: 'weekend-to-do-app',
+
+let config = {};
+// We need a different pg configuration if we're running
+// on Heroku, vs if we're running locally.
+//
+// Heroku gives us a process.env.DATABASE_URL variable,
+// so if that's set, we know we're on heroku.
+
+  config = {
     host: 'localhost',
     port: 5432,
-    max: 10,
-    idleTimeoutMillis: 30000
-});
+    database: process.env.DATABASE_NAME || 'weekend-to-do-app', // CHANGE THIS LINE to match your local database name!
+  };
+
+const pool = new Pool(config);
 
 pool.on('connect', () => {
     console.log('Postgresql is connected');
