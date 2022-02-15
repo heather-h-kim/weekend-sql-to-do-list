@@ -1,5 +1,5 @@
 const pg = require('pg');
-const Pool = pg.Pool;
+const url = require('url');
 let config = {};
 // We need a different pg configuration if we're running
 // on Heroku, vs if we're running locally.
@@ -22,7 +22,7 @@ if (process.env.DATABASE_URL) {
   };
 }
 
-const pool = new Pool(config);
+const pool = new pg.Pool(config);
 
 pool.on('connect', () => {
     console.log('Postgresql is connected');
