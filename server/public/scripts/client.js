@@ -75,6 +75,7 @@ function addNewTask(){
    let dataToSend = {
     task: newTask,
     deadline: deadline,
+    
    }
    $.ajax({
        type: 'POST',
