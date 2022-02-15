@@ -30,4 +30,7 @@ pool.on('connect', () => {
 
 pool.on('error', (error) => {
     console.log('Error with postgres pool', error);
+    process.exit(-1);
 });
+
+module.exports = pool;
